@@ -14,23 +14,11 @@ class MyCircle extends StatelessWidget {
             width: 30,
             height: 30,
             color: colorOne,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: 30,
-                height: 15, 
-                color: Colors.blue,
-              ),
-            ),
           ),
-          
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              width: 30,
-              height: 15, 
-              color: colorTwo,
-            ),
+          Container(
+            width: 30,
+            height: 15,
+            color: colorTwo,
           ),
         ],
       ),
