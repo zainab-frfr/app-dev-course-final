@@ -1,13 +1,9 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:final_exam/circle.dart';
+import 'package:final_exam/item_row.dart';
 import 'package:flutter/material.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart';
 
 void main() async{
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
   runApp(const MainApp());
 }
 
@@ -19,60 +15,68 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 53, 53, 53),
-        body: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 40.0, left: 20, right: 20, bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Recommended for\nyour devices', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),),
-                  Text('See all', style: TextStyle(color: Colors.blue),)
-                ],
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+          child: Column(
+            children: [
+              ListTile(
+                title: const Text('Weekly Expense', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                subtitle: const Text('From 1-6 Apr, 2024', style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15, color: Colors.grey),),
+                trailing: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey), 
+                    borderRadius: BorderRadius.circular(5)
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Text('View Report'),
+                  ),
+                ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20)
+              const SizedBox(height: 20,), 
+              const Stack(
+                children: [
+                  SizedBox( // background ya area of stack
+                    height: 300,
+                    width: 300,
+                  ),
+                  Positioned(
+                    top: 20,
+                    left: 10,
+                    child: MyCircle(colorbg: Color.fromARGB(255, 249, 214, 255), text: '48%', diameter: 160, colorText: Colors.purple)
+                  ),
+                  Positioned(
+                    top: 20,
+                    left: 170,
+                    child: MyCircle(colorbg: Color.fromARGB(255, 201, 255, 203), text: '32%', diameter: 100, colorText: Colors.green)
+                  ),
+                  Positioned(
+                    top: 120,
+                    left: 157,
+                    child: MyCircle(colorbg: Color.fromARGB(255, 255, 208, 205), text: '13%', diameter: 80, colorText: Colors.red)
+                  ),
+                  Positioned(
+                    top: 110,
+                    left: 240,
+                    child: MyCircle(colorbg: Color.fromARGB(255, 255, 234, 202), text: '7%', diameter: 50, colorText: Colors.orange)
                   )
-                ),
-                child: Column(
-                  children: [
-                    const Row(mainAxisAlignment: MainAxisAlignment.end,children: [Padding(
-                      padding: EdgeInsets.only(top: 20.0, right: 20),
-                      child: Icon(Icons.bookmark_border, color: Colors.blue,),
-                    )],), 
-                    const SizedBox(height: 10,),
-                    Image.asset('assets/images/headphones.jpg'), 
-                    const SizedBox(height: 10,),
-                    const Text('Free Engraving', style: TextStyle(color: Colors.orange),),
-                    const Text('AirPods Max - Silver', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 181, 176, 168)),),
-                    const Text('A\$899.0', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 181, 176, 168)),),
-                    const SizedBox(height: 10,),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        MyCircle(colorOne:  Color.fromARGB(255, 83, 80, 80), colorTwo: Colors.grey),
-                        SizedBox(width: 10,),
-                        MyCircle(colorOne:  Colors.red, colorTwo: Colors.orange),
-                        SizedBox(width: 10,),
-                        MyCircle(colorOne:  Colors.blue, colorTwo: Colors.lightBlue),
-                        SizedBox(width: 10,),
-                        MyCircle(colorOne:  Colors.green, colorTwo: Colors.lightGreen),
-                        SizedBox(width: 10,),
-                        Text('+1 more', style: TextStyle(color: Colors.white),)
-                      ],
-                    ),
-                  ],
-                ),
-              )
-            )
-          ],
+                ],
+              ), 
+              const DottedLine(dashLength: 4, dashColor: Colors.grey,),
+              const SizedBox(height: 10,), 
+              const Padding(
+                padding: EdgeInsets.all(15.0),
+                child: MyRow(colorOne: Colors.purple, colorTwo: Colors.green, itemOne: 'Grocery', itemTwo: 'Food & Drink', priceOne: '\$758.20', priceTwo: '\$758.20'),
+              ),
+              const SizedBox(height: 10,), 
+              const DottedLine(dashLength: 4, dashColor: Colors.grey,),
+              const Padding(
+                padding: EdgeInsets.all(15.0),
+                child: MyRow(colorOne: Colors.red, colorTwo: Colors.orange, itemOne: 'Shopping', itemTwo: 'Transportation', priceOne: '\$758.20', priceTwo: '\$758.20'),
+              ),
+              
+            ]
+          ),
         )
       ),
     );
