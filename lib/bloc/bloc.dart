@@ -17,33 +17,34 @@ class InformationBloc extends Bloc<Events, States>{
     emit(FetchingState());
     try{
 
-      List<Model> transactions =[];
-      QuerySnapshot snapshot = await store.collection('transactions').get();
-      transactions = snapshot.docs.map((doc) {
-        //debugPrint(doc.toString());
-        return Model.fromJson(doc.data() as Map<String, dynamic>);
-      }).toList();
+      //List<Model> transactions =[];
+      QuerySnapshot snapshot = await store.collection('products').get();
+      // transactions = snapshot.docs.map((doc) {
+      //   //debugPrint(doc.toString());
+      //   return Model.fromJson(doc.data() as Map<String, dynamic>);
+      // }).toList();
+      Model product = Model.fromJson(snapshot.docs.first.data() as Map<String,dynamic>);
 
-      num balance = calculateBalance(transactions);
+      //num balance = calculateBalance(transactions);
 
-      emit(FetchedState(balance: balance, transactions: transactions));
+      emit(FetchedState(product: product));
 
     }catch (e){
       emit(ErrorState(message: e.toString()));
     }
   }
 
-  num calculateBalance(List<Model> transactions){
-    num balance = 0;
-    for (Model transaction in transactions){
-      if(transaction.incoming){
-        balance += transaction.amount;
-      }else{
-        balance -= transaction.amount;
-      }
-    }
+  // num calculateBalance(List<Model> transactions){
+  //   num balance = 0;
+  //   for (Model transaction in transactions){
+  //     if(transaction.incoming){
+  //       balance += transaction.amount;
+  //     }else{
+  //       balance -= transaction.amount;
+  //     }
+  //   }
 
-    return balance;
-  }
+  //   return balance;
+  // }
   
 }

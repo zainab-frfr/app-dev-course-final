@@ -1,25 +1,28 @@
 class Model{
-  final num amount;
-  final DateTime date;
-  final String icon;
-  final bool incoming;
+  final num rating;
+  final String deliveryTime;
+  final String image;
+  final String peopleRated;
   final String title;
+  final String quantity;
 
   Model({
-    required this.amount,
-    required this.date,
-    required this.icon,
+    required this.rating,
+    required this.deliveryTime,
+    required this.image,
     required this.title,
-    required this.incoming,
+    required this.peopleRated,
+    required this.quantity,
   });
 
   factory Model.fromJson(Map<String,dynamic> json){ 
     return  Model(
-      amount: json['amount'], 
-      date: json['date'].toDate(),
-      icon: json['icon'], 
+      rating: json['rating'], 
+      deliveryTime: json['deliveryTime'],
+      image:  json['image'], 
+      peopleRated: json['peopleRated'], 
       title: json['title'], 
-      incoming: json['incoming'], 
+      quantity: json['quantity']
     );
   }
 
