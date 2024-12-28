@@ -5,6 +5,8 @@ class Model{
   final String peopleRated;
   final String title;
   final String quantity;
+  final String descOne; 
+  final String descTwo;
 
   Model({
     required this.rating,
@@ -13,6 +15,8 @@ class Model{
     required this.title,
     required this.peopleRated,
     required this.quantity,
+    required this.descOne, 
+    required this.descTwo,
   });
 
   factory Model.fromJson(Map<String,dynamic> json){ 
@@ -22,7 +26,9 @@ class Model{
       image:  json['image'], 
       peopleRated: json['peopleRated'], 
       title: json['title'], 
-      quantity: json['quantity']
+      quantity: json['quantity'], 
+      descOne : json['descriptionOne'],
+      descTwo : json['descriptionTwo'],
     );
   }
 
