@@ -13,25 +13,11 @@ class MyCircle extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            width: 30,
-            height: 30,
-            color: colorOne,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: 30,
-                height: 15, 
-                color: Colors.blue,
-              ),
-            ),
-          ),
-          
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              width: 30,
-              height: 15, 
-              color: colorTwo,
+            width: diameter,
+            height: diameter,
+            color: colorbg,
+            child: Center(
+              child: Text(text, style: TextStyle(color: colorText, fontWeight: FontWeight.bold),),
             ),
           ),
         ],

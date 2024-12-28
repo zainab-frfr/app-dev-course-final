@@ -37,7 +37,7 @@ class MainApp extends StatelessWidget {
               const Stack(
                 children: [
                   SizedBox( // background ya area of stack
-                    height: 300,
+                    height: 260,
                     width: 300,
                   ),
                   Positioned(

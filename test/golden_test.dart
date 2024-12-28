@@ -4,17 +4,11 @@ import 'package:final_exam/main.dart';
 
 void main() {
   testWidgets('Golden test for the UI', (WidgetTester tester) async {
-    // Build the widget
     await tester.pumpWidget(
-      // const MaterialApp(
-      //   home: 
-        const MainApp(), // Replace with your widget
-      // ),
+        const MainApp(), 
     );
-
-    // Take the screenshot and match with golden file
     await expectLater(
-      find.byType(MaterialApp), // Replace with your widget type
+      find.byType(MaterialApp),
       matchesGoldenFile('test/ui_sc.dart'),
     );
   });
